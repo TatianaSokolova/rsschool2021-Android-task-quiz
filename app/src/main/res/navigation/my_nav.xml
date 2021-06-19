@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/questionFragment">
+
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.rsschool.quiz.QuestionFragment"
+        android:label="QuestionFragment">
+        <action
+            android:id="@+id/action_questionFragment_to_question2Fragment"
+            app:destination="@id/question2Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/question2Fragment"
+        android:name="com.rsschool.quiz.Question2Fragment"
+        android:label="Question2Fragment">
+        <action
+            android:id="@+id/action_question2Fragment_to_questionFragment3"
+            app:destination="@id/questionFragment3" />
+        <action
+            android:id="@+id/action_question2Fragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment3"
+        android:name="com.rsschool.quiz.QuestionFragment3"
+        android:label="QuestionFragment3" >
+        <action
+            android:id="@+id/action_questionFragment3_to_question4Fragment"
+            app:destination="@id/question4Fragment" />
+        <action
+            android:id="@+id/action_questionFragment3_to_question2Fragment"
+            app:destination="@id/question2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/question4Fragment"
+        android:name="com.rsschool.quiz.Question4Fragment"
+        android:label="Question4Fragment" >
+        <action
+            android:id="@+id/action_question4Fragment_to_question5Fragment"
+            app:destination="@id/question5Fragment" />
+        <action
+            android:id="@+id/action_question4Fragment_to_questionFragment3"
+            app:destination="@id/questionFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/question5Fragment"
+        android:name="com.rsschool.quiz.Question5Fragment"
+        android:label="Question5Fragment" >
+        <action
+            android:id="@+id/action_question5Fragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_question5Fragment_to_question4Fragment"
+            app:destination="@id/question4Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.rsschool.quiz.ResultFragment"
+        android:label="fragment_result">
+        <action
+            android:id="@+id/action_resultFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
+
+</navigation>
