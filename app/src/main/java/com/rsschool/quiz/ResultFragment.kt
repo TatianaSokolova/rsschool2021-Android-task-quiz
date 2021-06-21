@@ -85,6 +85,16 @@ class ResultFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        requireActivity().onBackPressedDispatcher.addCallback(object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val myDialog = ExitDialogFragment()
+                myDialog.show(childFragmentManager, "missiles")
+            }
+        })
+    }
+
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
