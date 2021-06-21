@@ -41,7 +41,7 @@ class ResultFragment : Fragment() {
 
         result = Constants.getResult(mAnswers!!)
 
-        binding.resultText.text = "Quiz is finished! Here is your result: $result out of 5"
+        binding.resultText.text = "Quiz is finished! \n Here is your result: $result out of 5"
 
         binding.anotherTryButton.setOnClickListener {
             mAnswers?.clear()
@@ -51,11 +51,11 @@ class ResultFragment : Fragment() {
         }
 
         val textToShare = "Your result is $result out of 5 \n" +
-                "Question 1: Столица Великобритании? \n Your answer: ${Constants.answersList[0]} \n" +
-                "Question 2: Столица Франции? \n Your answer: ${Constants.answersList[1]} \n" +
-                "Question 3: Столица Испании? \n Your answer: ${Constants.answersList[2]} \n" +
-                "Question 4: Столица Швеции? \n Your answer: ${Constants.answersList[3]} \n" +
-                "Question 5: Столица Дании? \n Your answer: ${Constants.answersList[4]}"
+                "Question 1: Столица Турции? \n Your answer: ${Constants.answersList[0]} \n" +
+                "Question 2: Столица Австралии? \n Your answer: ${Constants.answersList[1]} \n" +
+                "Question 3: Столица Колумбии? \n Your answer: ${Constants.answersList[2]} \n" +
+                "Question 4: Столица Индии? \n Your answer: ${Constants.answersList[3]} \n" +
+                "Question 5: Столица Новой Зеландии? \n Your answer: ${Constants.answersList[4]}"
 
         binding.share.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
@@ -74,7 +74,6 @@ class ResultFragment : Fragment() {
             activity?.finish()
         }
     }
-
 
     override fun onDestroyView() {
         _binding = null
