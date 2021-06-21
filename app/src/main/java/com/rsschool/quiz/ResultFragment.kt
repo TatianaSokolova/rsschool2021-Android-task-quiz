@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import com.rsschool.quiz.databinding.FragmentQuizBinding
+import androidx.fragment.app.FragmentTransaction;
 import com.rsschool.quiz.databinding.FragmentResultBinding
 
 
@@ -73,6 +75,14 @@ class ResultFragment : Fragment() {
             Constants.answersList.clear()
             activity?.finish()
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val myDialog = ExitDialogFragment()
+                myDialog.show(childFragmentManager, "missiles")
+            }
+        })
+
     }
 
     override fun onDestroyView() {

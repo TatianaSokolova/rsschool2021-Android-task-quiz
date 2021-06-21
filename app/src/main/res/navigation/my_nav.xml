@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/questionFragment3"
-        android:name="com.rsschool.quiz.QuestionFragment3"
+        android:name="com.rsschool.quiz.Question3Fragment"
         android:label="QuestionFragment3" >
         <action
             android:id="@+id/action_questionFragment3_to_question4Fragment"

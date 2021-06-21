@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -95,42 +96,19 @@ class QuestionFragment : Fragment() {
                 }
         }
 
-
         binding.previousButton.isEnabled = false
+
+        requireActivity().onBackPressedDispatcher.addCallback(object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val myDialog = ExitDialogFragment()
+                myDialog.show(childFragmentManager, "missiles")
+            }
+        })
     }
 
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
     }
-
-
-
-
-
-//     private fun checkAnswer(currentNumber: Int): Int {
-//        val question = mQuestionsList!![currentNumber - 1]
-//
-//        var correctOption: View? = null
-//        when (question.correctAnswer) {
-//            binding.optionOne.text -> correctOption = binding.optionOne
-//            binding.optionTwo.text -> correctOption = binding.optionTwo
-//            binding.optionThree.text -> correctOption = binding.optionThree
-//            binding.optionFour.text -> correctOption = binding.optionFour
-//            binding.optionFive.text -> correctOption = binding.optionFive
-//        }
-//
-//        val selectedRadioButtonId = binding.radioGroup.checkedRadioButtonId
-//        if (selectedRadioButtonId == -1) {
-//            binding.nextButton.isEnabled = false
-//        } else if (binding.radioGroup.checkedRadioButtonId == correctOption?.id) {
-//            Log.d(TAG, binding.radioGroup.checkedRadioButtonId .toString())
-//            mResult++
-//            Log.d(TAG, mResult.toString())
-//            Toast.makeText(context, "correct result", Toast.LENGTH_SHORT).show()
-//        }
-//        return mResult
-//    }
-
 
 }

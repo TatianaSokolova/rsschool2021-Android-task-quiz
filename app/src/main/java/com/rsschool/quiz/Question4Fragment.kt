@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import com.rsschool.quiz.databinding.FragmentQuestion4Binding
 import com.rsschool.quiz.databinding.FragmentQuestion5Binding
@@ -73,7 +74,6 @@ class Question4Fragment : Fragment() {
         }
 
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            val selectedRadioButtonId = binding.radioGroup.checkedRadioButtonId
             val actionForward = Question4FragmentDirections.actionQuestion4FragmentToQuestion5Fragment()
             binding.nextButton.isEnabled = true
             binding.nextButton.setOnClickListener {
@@ -96,6 +96,13 @@ class Question4Fragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_question4Fragment_to_questionFragment3)
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val myDialog = ExitDialogFragment()
+                myDialog.show(childFragmentManager, "missiles")
+            }
+        })
     }
 
     override fun onDestroyView() {

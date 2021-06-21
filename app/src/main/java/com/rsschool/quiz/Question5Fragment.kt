@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import com.rsschool.quiz.databinding.FragmentQuestion5Binding
 import com.rsschool.quiz.databinding.FragmentQuizBinding
@@ -115,6 +116,13 @@ class Question5Fragment : Fragment() {
             }
             Navigation.findNavController(view).navigate(R.id.action_question5Fragment_to_question4Fragment)
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val myDialog = ExitDialogFragment()
+                myDialog.show(childFragmentManager, "missiles")
+            }
+        })
 
     }
 

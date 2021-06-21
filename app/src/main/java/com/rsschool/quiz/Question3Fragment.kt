@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.rsschool.quiz.databinding.FragmentQuestion3Binding
@@ -13,7 +14,7 @@ import com.rsschool.quiz.databinding.FragmentQuestion4Binding
 import com.rsschool.quiz.databinding.FragmentQuestion5Binding
 
 
-class QuestionFragment3 : Fragment() {
+class Question3Fragment : Fragment() {
   // val args: QuestionFragment3Args by navArgs()
 
     private var _binding: FragmentQuestion3Binding? = null
@@ -62,7 +63,7 @@ class QuestionFragment3 : Fragment() {
             }
             binding.nextButton.isEnabled = true
             binding.nextButton.setOnClickListener {
-                Navigation.findNavController(view).navigate(QuestionFragment3Directions.actionQuestionFragment3ToQuestion4Fragment())
+                Navigation.findNavController(view).navigate(Question3FragmentDirections.actionQuestionFragment3ToQuestion4Fragment())
             }
         }
 
@@ -78,8 +79,7 @@ class QuestionFragment3 : Fragment() {
         }
 
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            val selectedRadioButtonId = binding.radioGroup.checkedRadioButtonId
-            val actionForward = QuestionFragment3Directions.actionQuestionFragment3ToQuestion4Fragment()
+            val actionForward = Question3FragmentDirections.actionQuestionFragment3ToQuestion4Fragment()
             binding.nextButton.isEnabled = true
             binding.nextButton.setOnClickListener {
                 when (checkedId) {
@@ -95,16 +95,22 @@ class QuestionFragment3 : Fragment() {
 
         }
 
-       // mPrevCheckId = args.checkedButton
         binding.previousButton.setOnClickListener {
-            val actionBackward = QuestionFragment3Directions.actionQuestionFragment3ToQuestion2Fragment()
+            val actionBackward = Question3FragmentDirections.actionQuestionFragment3ToQuestion2Fragment()
             Navigation.findNavController(view).navigate(actionBackward)
         }
 
         binding.toolbar.setNavigationOnClickListener {
-            val actionBackward = QuestionFragment3Directions.actionQuestionFragment3ToQuestion2Fragment()
+            val actionBackward = Question3FragmentDirections.actionQuestionFragment3ToQuestion2Fragment()
             Navigation.findNavController(view).navigate(actionBackward)
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val myDialog = ExitDialogFragment()
+                myDialog.show(childFragmentManager, "missiles")
+            }
+        })
     }
 
     override fun onDestroyView() {

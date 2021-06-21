@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.rsschool.quiz.databinding.FragmentQuestion2Binding
@@ -94,7 +95,6 @@ class Question2Fragment : Fragment() {
             }
         }
 
-
         binding.previousButton.setOnClickListener {
             val actionBackward = Question2FragmentDirections.actionQuestion2FragmentToQuestionFragment()
             Navigation.findNavController(view).navigate(actionBackward)
@@ -104,6 +104,13 @@ class Question2Fragment : Fragment() {
             val actionBackward = Question2FragmentDirections.actionQuestion2FragmentToQuestionFragment()
             Navigation.findNavController(view).navigate(actionBackward)
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val myDialog = ExitDialogFragment()
+                myDialog.show(childFragmentManager, "missiles")
+            }
+        })
     }
 
     override fun onDestroyView() {
